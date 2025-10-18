@@ -49,14 +49,14 @@ CREATE TABLE Customers (
 
 
 CREATE TABLE `Orders` (
-    `order_id` INT NOT NULL AUTO_INCREMENT,
-    `customer_id` INT NOT NULL,
-    `order_date` DATE NOT NULL,
-    PRIMARY KEY (`order_id`),
-        INDEX `idx_orders_customer_id` (`customer_id`),
+    order_id INT AUTO_INCREMENT,
+    customer_id INT NOT NULL,
+    order_date DATE,
+    PRIMARY KEY (order_id),
+        INDEX `idx_orders_customer_id` (customer_id),
         CONSTRAINT `fk_orders_customer`
-            FOREIGN KEY (`customer_id`)
-            REFERENCES `Customers` (`customer_id`)
+            FOREIGN KEY (customer_id)
+            REFERENCES Customers (customer_id)
             ON DELETE CASCADE
             ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
