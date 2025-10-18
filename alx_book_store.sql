@@ -37,11 +37,11 @@ CREATE TABLE `Authors` (
 
 
 
-CREATE TABLE `Customers` (
-  `customer_id` INT NOT NULL AUTO_INCREMENT,
-  `customer_name` VARCHAR(215) ,
-  `email` VARCHAR(215) ,
-  `address` TEXT ,
+CREATE TABLE Customers (
+  customer_id INT NOT NULL AUTO_INCREMENT,
+  customer_name VARCHAR(215),
+  email VARCHAR(215),
+  address TEXT,
   PRIMARY KEY (`customer_id`),
     UNIQUE INDEX `idx_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
