@@ -56,7 +56,7 @@ CREATE TABLE `Orders` (
         INDEX `idx_orders_customer_id` (customer_id),
         CONSTRAINT `fk_orders_customer`
             FOREIGN KEY (customer_id)
-            REFERENCES Customers (customer_id)
+            REFERENCES Customers(customer_id)
             ON DELETE CASCADE
             ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
