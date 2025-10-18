@@ -30,7 +30,7 @@ CREATE TABLE `Books` (
 
 
 CREATE TABLE `Authors` (
-  `author_id` INT NOT NULL AUTO_INCREMENT,
+  `author_id ` INT NOT NULL AUTO_INCREMENT,
   `author_name` VARCHAR(215) NOT NULL,
   PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
