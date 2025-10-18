@@ -5,8 +5,13 @@ CREATE DATABASE IF NOT EXISTS alx_book_store;
 USE `alx_book_store`;
 
 
-
+DROP TABLE IF EXISTS `Order_Details`;
+DROP TABLE IF EXISTS `Orders`;
 DROP TABLE IF EXISTS `Books`;
+DROP TABLE IF EXISTS `Authors`;
+DROP TABLE IF EXISTS `Customers`;
+
+
 CREATE TABLE `Books` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(130) NOT NULL,
@@ -23,15 +28,15 @@ CREATE TABLE `Books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-DROP TABLE IF EXISTS `Authors`;
+
 CREATE TABLE `Authors` (
   `author_id` INT NOT NULL AUTO_INCREMENT,
   `author_name` VARCHAR(215) NOT NULL,
   PRIMARY KEY (`author_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-DROP TABLE IF EXISTS `Customers`;
+
 CREATE TABLE `Customers` (
   `customer_id` INT NOT NULL AUTO_INCREMENT,
   `customer_name` VARCHAR(215) NOT NULL,
@@ -42,7 +47,7 @@ CREATE TABLE `Customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-DROP TABLE IF EXISTS `Orders`;
+
 CREATE TABLE `Orders` (
     `order_id` INT NOT NULL AUTO_INCREMENT,
     `customer_id` INT NOT NULL,
@@ -56,7 +61,6 @@ CREATE TABLE `Orders` (
             ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `Order_Details`;
 CREATE TABLE `Order_Details` (
     `order_detail_id` INT NOT NULL AUTO_INCREMENT,
     `order_id` INT NOT NULL,
