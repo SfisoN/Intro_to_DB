@@ -1,0 +1,79 @@
+DROP DATABASE IF EXISTS alx_book_store;
+CREATE DATABASE `alx_book_store`;
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_general_ci;
+USE `alx_book_store`;
+
+
+
+DROP TABLE IF EXISTS `Books`;
+CREATE TABLE `Books` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(130) NOT NULL,
+  `author_id` INT NOT NULL,
+  `price` DOUBLE NOT NULL DEFAULT 0.00,
+  `published_date` DATE NULL,
+  PRIMARY KEY (`id`),
+    INDEX `idx_author_id` (`author_id`),
+    CONSTRAINT `fk_books_author`
+        FOREIGN KEY (`author_id`)
+        REFERENCES `Authors` (`author_id`)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `Authors`;
+CREATE TABLE `Authors` (
+  `author_id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(215) NOT NULL,
+  `birthdate` DATE NULL,
+  PRIMARY KEY (`author_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `Customers`;
+CREATE TABLE `Customers` (
+  `customer_id` INT NOT NULL AUTO_INCREMENT,
+  `customer_name` VARCHAR(215) NOT NULL,
+  `email` VARCHAR(150) NOT NULL,
+  `address` TEXT,
+  PRIMARY KEY (`customer_id`),
+    UNIQUE INDEX `idx_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+DROP TABLE IF EXISTS `Orders`;
+CREATE TABLE `Orders` (
+    `order_id` INT NOT NULL AUTO_INCREMENT,
+    `customer_id` INT NOT NULL,
+    `order_date` DATE NOT NULL,
+    PRIMARY KEY (`order_id`),
+        INDEX `idx_orders_customer_id` (`customer_id`),
+        CONSTRAINT `fk_orders_customer`
+            FOREIGN KEY (`customer_id`)
+            REFERENCES `Customers` (`customer_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+DROP TABLE IF EXISTS `Order_Details`;
+CREATE TABLE `Order_Details` (
+    `order_detail_id` INT NOT NULL AUTO_INCREMENT,
+    `order_id` INT NOT NULL,
+    `book_id` INT NOT NULL,
+    `quantity` DOUBLE NOT NULL DEFAULT 1,
+    PRIMARY KEY (`order_detail_id`),
+        INDEX `idx_order_details_order_id` (`order_id`),
+        INDEX `idx_order_details_book_id` (`book_id`),
+        CONSTRAINT `fk_order_details_order`
+            FOREIGN KEY (`order_id`)
+            REFERENCES `Orders` (`order_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+        CONSTRAINT `fk_order_details_book`
+            FOREIGN KEY (`book_id`)
+            REFERENCES `Books` (`id`)
+            ON DELETE RESTRICT
+            ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
