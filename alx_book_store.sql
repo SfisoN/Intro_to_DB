@@ -54,9 +54,7 @@ CREATE TABLE `Orders` (
     order_date DATE,
     PRIMARY KEY (order_id),
         INDEX idx_orders_customer_id (customer_id),
-        CONSTRAINT fk_orders_customer
-            FOREIGN KEY (customer_id)
-             REFERENCES Customers(customer_id)
+        CONSTRAINT fk_orders_customer FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `Order_Details` (
