@@ -1,7 +1,7 @@
 TABLE_SCHEMA = 'alx_book_store'
-  AND TABLE_NAME = 'Books
+  AND TABLE_NAME = 'Books'
+
   
-  '
 SELECT
   COLUMN_NAME AS 'Field',
   COLUMN_TYPE AS 'Type',
