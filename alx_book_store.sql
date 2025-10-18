@@ -58,21 +58,19 @@ CREATE TABLE `Orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `Order_Details` (
-    `order_detail_id` INT NOT NULL AUTO_INCREMENT,
-    `order_id` INT NOT NULL,
-    `book_id` INT NOT NULL,
-    `quantity` DOUBLE NOT NULL DEFAULT 1,
-    PRIMARY KEY (`order_detail_id`),
-        INDEX `idx_order_details_order_id` (`order_id`),
-        INDEX `idx_order_details_book_id` (`book_id`),
-        CONSTRAINT `fk_order_details_order`
-            FOREIGN KEY (`order_id`)
-            REFERENCES `Orders` (`order_id`)
+    order_detail_id INT NOT NULL AUTO_INCREMENT,
+    order_id INT,
+    book_id INT,
+    quantity DOUBLE DEFAULT 1,
+    PRIMARY KEY (order_detail_id),
+        INDEX idx_order_details_order_id (order_id),
+        INDEX idx_order_details_book_id (book_id),
+        CONSTRAINT fk_order_details_order
+            FOREIGN KEY (order_id) REFERENCES Orders(order_id)
             ON DELETE CASCADE
             ON UPDATE CASCADE,
-        CONSTRAINT `fk_order_details_book`
-            FOREIGN KEY (`book_id`)
-            REFERENCES `Books` (`id`)
+        CONSTRAINT fk_order_details_book
+            FOREIGN KEY (book_id) REFERENCES Books(book_id)
             ON DELETE RESTRICT
             ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
