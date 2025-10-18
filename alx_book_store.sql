@@ -53,12 +53,10 @@ CREATE TABLE `Orders` (
     customer_id INT NOT NULL,
     order_date DATE,
     PRIMARY KEY (order_id),
-        INDEX `idx_orders_customer_id` (customer_id),
-        CONSTRAINT `fk_orders_customer`
+        INDEX idx_orders_customer_id (customer_id),
+        CONSTRAINT fk_orders_customer
             FOREIGN KEY (customer_id)
             REFERENCES Customers(customer_id)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `Order_Details` (
