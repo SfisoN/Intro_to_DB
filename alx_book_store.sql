@@ -26,7 +26,7 @@ CREATE TABLE `Books` (
 DROP TABLE IF EXISTS `Authors`;
 CREATE TABLE `Authors` (
   `author_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(215) NOT NULL,
+  `author_name` VARCHAR(215) NOT NULL,
   `birthdate` DATE NULL,
   PRIMARY KEY (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
