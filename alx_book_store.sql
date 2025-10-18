@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS alx_book_store;
-CREATE DATABASE alx_book_store;
+CREATE DATABASE IF NOT EXISTS alx_book_store;
   DEFAULT CHARACTER SET utf8mb4
   DEFAULT COLLATE utf8mb4_general_ci;
 USE `alx_book_store`;
